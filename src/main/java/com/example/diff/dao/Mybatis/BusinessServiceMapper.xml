@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.diff.dao.Mapper.BusinessServiceMapper">
+    <resultMap id="bsMethod" type="com.example.pojo.BusinessServiceMethod"></resultMap>
+    <parameterMap id="bsMethodP" type="com.example.pojo.BusinessServiceMethod"></parameterMap>
+
+    <select id="queryMethodByBS" parameterMap="bsMethodP" resultMap="bsMethod">
+        /*通过BS查询Method*/
+        SELECT T2.ROW_ID           AS ID,
+               T1.NAME             AS BUSINESSSERVICE, /*BS*/
+               T2.NAME             AS METHODNAME, /*方法名*/
+               EMPLOYEE_X.FST_NAME AS LastBy, /*方法修改人*/
+               EMPLOYEE_XX.LOGIN   AS LastByCode, /*方法修改人Id*/
+               T2.PROG_LANG        AS ProgLang, /*程序语言*/
+               T2.SCRIPT, /*方法代码*/
+               T2.LAST_UPD /*方法修改时间*/
+          FROM SIEBEL.S_SERVICE       T1,
+               SIEBEL.S_SERVICE_SCRPT T2,
+               SIEBEL.S_CONTACT       EMPLOYEE_X,
+               SIEBEL.S_USER          EMPLOYEE_XX
+         WHERE T1.ROW_ID = T2.SERVICE_ID(+)
+           AND T2.LAST_UPD_BY = EMPLOYEE_X.ROW_ID(+)
+           AND EMPLOYEE_X.ROW_ID = EMPLOYEE_XX.ROW_ID(+)
+           AND T1.NAME = #{methodName}
+    </select>
+
+</mapper>

@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration monitorInterval="30">
+	<Properties>
+	    	<Property name="logdir">logs</Property>
+	</Properties>
+	<Appenders>
+		<Console name="Console" target="SYSTEM_OUT">
+			<PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n" />
+		</Console>
+		
+		<RollingFile name="mobileLog" fileName="${logdir}/mobile.log"
+                     filePattern="${logdir}/$${date:yyyy-MM}/mobile-%d{MM-dd-yyyy}-%i.log.gz">
+            <PatternLayout pattern="%d{yyyy-MM-dd 'at' HH:mm:ss z} %-5level %class{36} %L %M - %msg%xEx%n"/>
+            <Policies>
+            	<OnStartupTriggeringPolicy />
+				<SizeBasedTriggeringPolicy size="200 MB" />
+			</Policies>
+        </RollingFile>
+        
+        <RollingFile name="mobileWsLog" fileName="${logdir}/mobile-ws.log"
+                     filePattern="${logdir}/$${date:yyyy-MM}/mobile-ws-%d{MM-dd-yyyy}-%i.log.gz">
+            <PatternLayout pattern="%d{yyyy-MM-dd 'at' HH:mm:ss z} %-5level %class{36} %L %M - %msg%xEx%n"/>
+            <Policies>
+            	<OnStartupTriggeringPolicy />
+				<SizeBasedTriggeringPolicy size="200 MB" />
+			</Policies>
+        </RollingFile>
+        
+        <RollingFile name="mobileWebLog" fileName="${logdir}/mobile-web.log"
+                     filePattern="${logdir}/$${date:yyyy-MM}/mobile-web-%d{MM-dd-yyyy}-%i.log.gz">
+            <PatternLayout pattern="%d{yyyy-MM-dd 'at' HH:mm:ss z} %-5level %class{36} %L %M - %msg%xEx%n"/>
+            <Policies>
+            	<OnStartupTriggeringPolicy />
+				<SizeBasedTriggeringPolicy size="200 MB" />
+			</Policies>
+        </RollingFile>
+        
+        <RollingFile name="mobileSecurityLog" fileName="${logdir}/mobile-security.log"
+                     filePattern="${logdir}/$${date:yyyy-MM}/mobile-sercurity-%d{MM-dd-yyyy}-%i.log.gz">
+            <PatternLayout pattern="%d{yyyy-MM-dd 'at' HH:mm:ss z} %-5level %class{36} %L %M - %msg%xEx%n"/>
+            <Policies>
+            	<OnStartupTriggeringPolicy />
+				<SizeBasedTriggeringPolicy size="200 MB" />
+			</Policies>
+        </RollingFile>
+        
+        
+        <RollingFile name="mobileOrmLog" fileName="${logdir}/mobile-orm.log"
+                     filePattern="${logdir}/$${date:yyyy-MM}/mobile-orm-%d{MM-dd-yyyy}-%i.log.gz">
+            <PatternLayout pattern="%d{yyyy-MM-dd 'at' HH:mm:ss z} %-5level %class{36} %L %M - %msg%xEx%n"/>
+            <Policies>
+            	<OnStartupTriggeringPolicy />
+				<SizeBasedTriggeringPolicy size="200 MB" />
+			</Policies>
+        </RollingFile>
+	</Appenders>
+	<Loggers>
+
+		
+		<!-- 应用程序日志 -->
+		<logger name="com.hand" level="DEBUG">
+			<AppenderRef ref="mobileLog" />
+		</logger>
+		<logger name="org.springframework" level="INFO">
+			<AppenderRef ref="mobileLog" />
+		</logger>
+		<logger name="org.apache.http" level="ERROR">
+			<AppenderRef ref="mobileLog" />
+		</logger>
+		
+		<!-- 安全模块日志 -->
+		<logger name="org.springframework.security" level="INFO">
+			<AppenderRef ref="mobileSecurityLog" />
+		</logger>
+		
+		<!-- Web模块日志 -->
+		<logger name="org.springframework.web" level="INFO">
+			<AppenderRef ref="mobileWebLog" />
+		</logger>
+		
+		<!-- ORM 模块日志 -->
+		<logger name="org.apache.ibatis" level="INFO">
+			<AppenderRef ref="mobileOrmLog" />
+		</logger>
+		
+		<!-- WebService模块日志 -->
+		<logger name="com.siebel" level="INFO">
+			<AppenderRef ref="mobileWsLog" />
+		</logger>
+		<logger name="com.hand.core.service.webserviclog" level="DEBUG">
+			<AppenderRef ref="mobileWsLog" />
+		</logger>
+		
+		<!-- 其他 -->
+		<logger name="org.aspectj" level="INFO">
+			<AppenderRef ref="mobileLog" />
+		</logger>
+		
+		<logger name="net.sf.ehcache" level="INFO">
+			<AppenderRef ref="mobileLog" />
+		</logger>
+		
+		<Root level="DEBUG">
+			<AppenderRef ref="Console" />
+		</Root>
+	</Loggers>
+</Configuration>

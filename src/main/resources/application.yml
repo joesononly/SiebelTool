@@ -1,0 +1,45 @@
+spring:
+  application:
+    name: lnkcrm-business
+  profiles:
+    active: remote
+
+#默认端口
+server:
+  port: 8082
+
+---
+spring:
+  profiles: remote
+  #数据库配置
+  datasource:
+    driverClassName: oracle.jdbc.OracleDriver
+    url: jdbc:oracle:thin:@192.168.19.149:1521:DEVP
+    url1: jdbc:oracle:thin:@192.168.19.149:1521:DEVP
+    url2: jdbc:oracle:thin:@192.168.19.148:1521:DEVP
+    username: LINKCRM
+    password: dpdb2017
+    max-active: 10000
+    max-idle: 20
+    min-idle: 2
+    max-wait: 600000
+    test-on-borrow: true
+    test-while-idle: true
+    validation-query: select 1 from dual
+    initial-size: 10
+    username2: SIEBEL
+    password2: Sebldevp01
+
+#端口
+server:
+  port: 8082
+
+
+project:
+  build:
+    sourceEncoding: UTF-8
+
+#mybatis config
+mybatis:
+  typeAliasesPackage: com.example.pojo
+  mapperLocations: classpath:com/example/**/dao/Mybatis/*Mapper.xml

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<head>
+	<title>文本比较</title>
+</head>
+<!-- 公共js -->
+<script type="text/javascript" src="/page/js/jquery-1.11.3.min.js"></script>
+<script type="text/javascript" src="/page/js/AnchorIterator.js"></script>
+<!-- <script type="text/javascript" src="/page/js/chinaz_top.js"></script> -->
+<script type="text/javascript" src="/page/js/Diff.js"></script>
+<script type="text/javascript" src="/page/js/DiffFormatter.js"></script>
+<script type="text/javascript" src="/page/js/EditSet.js"></script>
+<script type="text/javascript" src="/page/js/jq-public.js"></script>
+<script type="text/javascript" src="/page/js/jq-tools.js"></script>
+<script type="text/javascript" src="/page/js/layer.js"></script>
+<script type="text/javascript" src="/page/js/LineDiff.js"></script>
+<script type="text/javascript" src="/page/js/LineFormatter.js"></script>
+<script type="text/javascript" src="/page/js/LineUtils.js"></script>
+<!-- <script type="text/javascript" src="/page/js/member.js"></script> -->
+<script type="text/javascript" src="/page/js/mobilepage.js"></script>
+<script type="text/javascript" src="/page/js/push.js"></script>
+<!-- <script type="text/javascript" src="/page/js/tool_468.js"></script> -->
+<!-- <script type="text/javascript" src="/page/js/tool_a.js"></script> -->
+<script type="text/javascript" src="/page/js/highlight.pack.js"></script>
+<!-- <script type="text/javascript" src="/page/js/uc.js"></script> -->
+
+<script type="text/javascript" src="/page/js/example.js"></script>
+
+<!-- 样式 -->
+<link rel="stylesheet" type="text/css" href="/page/css/all-base.css">
+<link rel="stylesheet" type="text/css" href="/page/css/dialog.css">
+<link rel="stylesheet" type="text/css" href="/page/css/diff.css">
+<link rel="stylesheet" type="text/css" href="/page/css/layer.css">
+<link rel="stylesheet" type="text/css" href="/page/css/loginpopup.css">
+<link rel="stylesheet" type="text/css" href="/page/css/publicstyle.css">
+<link rel="stylesheet" type="text/css" href="/page/css/toolstyle.css">
+<link rel="stylesheet" type="text/css" href="/page/css/top.css">
+<link rel="stylesheet" type="text/css" href="/page/css/topbar.css">
+
+<body>
+	<div class="wrapper"> 
+    	<div class="wwlr auto">
+    		<!--GuoLvWrap-begin--> 
+	      	<div class="clearfix pr" id="txtcontents">
+	            <div class="pr JsTxtW-r fl">
+	                <textarea class="JsTxtCo bor-a1s h200 WrapHid wwlr-l" id="original" style=""></textarea> <b class="search-hint CentHid" style="display: none;">文本一</b>
+	            </div> 
+	            <div class="pr JsTxtW-r ml20 fl">
+	                <textarea class="JsTxtCo bor-a1s h200 WrapHid wwlr-l" id="edited" style=""></textarea><b class="search-hint CentHid" style="display: none;">文本二</b>
+	            </div> 
+	        </div>
+	        <div class="pt10 clearfix">
+	            <div class="GuoLvCbtn"><input type="button" id="diffuse" value="开始比较" class="GLOkBtn"><input type="button" value="清空" id="clear" class="bg-blue02"></div>
+	        </div>
+	        <!-- -GuoLvWrap-end -->
+			<div class="clearfix pt10" id="result">
+			    <div class="pr JsTxtW-r fl">
+			        <pre id="original_result"><code class=""></code></pre>
+			    </div> 
+			    <div class="pr JsTxtW-r ml20 fl">
+			        <pre id="edited_result"><code class=""></code></pre>
+			    </div> 
+			</div>
+		</div>
+	</div>
+</body>
+<!-- <script type="text/javascript">
+	function onDiff(){
+		var diff = new SourceDiff.Diff(true);
+        var formatter = new SourceDiff.DiffFormatter(diff);
+
+        var text1 = "a";
+		var text2 = "b";
+
+        var chag = 0, add = 0, del = 0;
+        var results = formatter.formattedDiff(text1, text2);
+
+        console.log(results);
+
+        var adds = results[3].added.all();
+        var dels = results[3].deleted.all();
+        var cha = arrayIntersection(adds, dels);
+
+        //$(".hljs-line-numbers").remove();
+        $('#original_result code').html(results[0]);
+        $('#edited_result code').html(results[1]);
+
+		
+	}
+
+	function arrayIntersection(a, b) {
+        var ai = 0, bi = 0;
+        var result = new Array();
+
+        while (ai < a.length && bi < b.length) {
+            if (a[ai] < b[bi]) { ai++; }
+            else if (a[ai] > b[bi]) { bi++; }
+            else /* they're equal */
+            {
+                result.push(a[ai]);
+                ai++;
+                bi++;
+            }
+        }
+
+        return result;
+    }
+
+    function arrayIntersect(a, b) {
+        return jQuery.merge(jQuery.grep(a, function (i) {
+            return jQuery.inArray(i, b) == -1;
+        }), jQuery.grep(b, function (i) {
+            return jQuery.inArray(i, a) == -1;
+        })
+        );
+    };
+</script> -->
+</html>
