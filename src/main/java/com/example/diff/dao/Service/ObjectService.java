@@ -4,8 +4,10 @@ package com.example.diff.dao.Service;/*
  * @Comment
  */
 
-import com.example.diff.dao.Mapper.BusinessServiceMapper;
+import com.example.diff.dao.mapper.BusinessServiceMapper;
+import com.example.pojo.BusinessService;
 import com.example.pojo.BusinessServiceMethod;
+import com.github.pagehelper.PageHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -22,7 +24,18 @@ public class ObjectService {
      * @param businessServiceMethod
      * @return
      */
-    private List<BusinessServiceMethod> queryMethodByBS(BusinessServiceMethod businessServiceMethod){
+    public List<BusinessServiceMethod> queryMethodByBS(BusinessServiceMethod businessServiceMethod){
+        PageHelper.startPage(1, 10);
         return bmMapper.queryMethodByBS(businessServiceMethod);
+    }
+
+    /**
+     * @Comment 查询Bs
+     * @param businessService
+     * @return
+     */
+    public List<BusinessService> queryBsByName(BusinessService businessService){
+        PageHelper.startPage(1, 10);
+        return bmMapper.queryBsByName(businessService);
     }
 }

@@ -5,7 +5,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-@MapperScan("com.example.**.Mapper")
+@MapperScan("com.example.**.mapper")
 public class DiffApplication {
 
     public static void main(String[] args) {

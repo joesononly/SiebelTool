@@ -14,11 +14,11 @@ spring:
   #数据库配置
   datasource:
     driverClassName: oracle.jdbc.OracleDriver
-    url: jdbc:oracle:thin:@192.168.19.149:1521:DEVP
-    url1: jdbc:oracle:thin:@192.168.19.149:1521:DEVP
-    url2: jdbc:oracle:thin:@192.168.19.148:1521:DEVP
-    username: LINKCRM
-    password: dpdb2017
+    url: jdbc:oracle:thin:@172.31.100.51:1521:CRMPROD
+    url1: jdbc:oracle:thin:@172.31.100.51:1521:CRMPROD
+    url2: jdbc:oracle:thin:@172.31.100.51:1521:CRMPROD
+    username: SADMIN
+    password: Sadm123!#
     max-active: 10000
     max-idle: 20
     min-idle: 2
@@ -27,13 +27,16 @@ spring:
     test-while-idle: true
     validation-query: select 1 from dual
     initial-size: 10
-    username2: SIEBEL
-    password2: Sebldevp01
+    username2: SADMIN
+    password2: Sadm123!#
 
 #端口
 server:
   port: 8082
 
+logging:
+  level:
+    com.example.diff.dao.mapper: DEBUG
 
 project:
   build:
@@ -41,5 +44,5 @@ project:
 
 #mybatis config
 mybatis:
-  typeAliasesPackage: com.example.pojo
-  mapperLocations: classpath:com/example/**/dao/Mybatis/*Mapper.xml
+  mapper-locations: classpath:mapper/*.xml
+  config-location: classpath:mybatis-config.xml

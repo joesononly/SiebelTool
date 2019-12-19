@@ -183,3 +183,10 @@
         })
         );
     };
+
+    function setScript(sourceScript,targetScript){
+        clear();
+        $("#original").val(sourceScript);
+        $("#edited").val(targetScript);
+        doDiff();
+    }

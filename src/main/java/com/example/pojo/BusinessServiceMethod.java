@@ -4,17 +4,12 @@ package com.example.pojo;/*
  * @Comment BS对应的方法信息
  */
 
-public class BusinessServiceMethod {
+public class BusinessServiceMethod extends BaseModal {
 
-    private String id;
     //BS
     private String businessService;
     //方法
     private String methodName;
-    //修改人
-    private String lastBy;
-    //修改人编码
-    private String lastByCode;
     //程序语言
     private String ProgLang;
     //代码
@@ -22,13 +17,7 @@ public class BusinessServiceMethod {
     //修改时间
     private String lastUpd;
 
-    public String getId() {
-        return id;
-    }
 
-    public void setId(String id) {
-        this.id = id;
-    }
 
     public String getBusinessService() {
         return businessService;
@@ -44,22 +33,6 @@ public class BusinessServiceMethod {
 
     public void setMethodName(String methodName) {
         this.methodName = methodName;
-    }
-
-    public String getLastBy() {
-        return lastBy;
-    }
-
-    public void setLastBy(String lastBy) {
-        this.lastBy = lastBy;
-    }
-
-    public String getLastByCode() {
-        return lastByCode;
-    }
-
-    public void setLastByCode(String lastByCode) {
-        this.lastByCode = lastByCode;
     }
 
     public String getProgLang() {
