@@ -20,6 +20,11 @@ public class BaseModal {
     //结束时间
     private String endDate;
 
+    //当前页面
+    private Integer page;
+    //一页行数
+    private Integer rows;
+
     public String getId() {
         return id;
     }
@@ -66,5 +71,21 @@ public class BaseModal {
 
     public void setEndDate(String endDate) {
         this.endDate = endDate;
+    }
+
+    public Integer getPage() {
+        return page;
+    }
+
+    public void setPage(Integer page) {
+        this.page = page;
+    }
+
+    public Integer getRows() {
+        return rows;
+    }
+
+    public void setRows(Integer rows) {
+        this.rows = rows;
     }
 }

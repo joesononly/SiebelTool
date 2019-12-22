@@ -1,15 +1,16 @@
-package com.example.controller;/*
+package com.example.controller;
+/*
  * @Created by Administrator
  * @Created 2019/12/13
  * @Comment
  */
 
-import com.example.diff.dao.Service.ObjectService;
+import com.example.diff.source.dao.Service.ObjectService;
 import com.example.pojo.BusinessService;
 import com.example.pojo.BusinessServiceMethod;
+import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -45,7 +46,9 @@ public class DiffController {
         Map<String,Object> result = new HashMap<>();
         try{
             List<BusinessServiceMethod> businessServiceMethods = objectService.queryMethodByBS(method);
-            result.put("data",businessServiceMethods);
+            PageInfo<BusinessServiceMethod> pageInfo = new PageInfo<BusinessServiceMethod>(businessServiceMethods);
+            result.put("rows",businessServiceMethods);
+            result.put("total",pageInfo.getTotal());
             result.put("status","success");
         }catch (Exception e){
             e.printStackTrace();
@@ -61,7 +64,7 @@ public class DiffController {
         Map<String,Object> result = new HashMap<>();
         try{
             List<BusinessService> businessServices = objectService.queryBsByName(bs);
-            result.put("data",businessServices);
+            result.put("rows",businessServices);
             result.put("status","success");
 
         }catch (Exception e){

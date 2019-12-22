@@ -24,6 +24,8 @@
     }
     function doDiff() {
 
+        debugger;
+
         var diff = new SourceDiff.Diff(true);
         var formatter = new SourceDiff.DiffFormatter(diff);
 
@@ -185,7 +187,6 @@
     };
 
     function setScript(sourceScript,targetScript){
-        clear();
         $("#original").val(sourceScript);
         $("#edited").val(targetScript);
         doDiff();

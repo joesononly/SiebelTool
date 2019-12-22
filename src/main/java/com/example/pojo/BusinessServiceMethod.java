@@ -17,6 +17,7 @@ public class BusinessServiceMethod extends BaseModal {
     //修改时间
     private String lastUpd;
 
+    private BusinessServiceMethod destMethod;
 
 
     public String getBusinessService() {
@@ -57,5 +58,13 @@ public class BusinessServiceMethod extends BaseModal {
 
     public void setLastUpd(String lastUpd) {
         this.lastUpd = lastUpd;
+    }
+
+    public BusinessServiceMethod getDestMethod() {
+        return destMethod;
+    }
+
+    public void setDestMethod(BusinessServiceMethod destMethod) {
+        this.destMethod = destMethod;
     }
 }
